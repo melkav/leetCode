@@ -1,0 +1,8 @@
+/**
+ * @param {string} address
+ * @return {string}
+ */
+//belirtilen karakterler arasında değiştirme işlemi yapılır
+var defangIPaddr = function(address) {
+    return address.replace(/[.]/g,"[.]");
+};
