@@ -1,0 +1,32 @@
+/**
+ * @param {string[]} products
+ * @param {string} searchWord
+ * @return {string[][]}
+ */
+var suggestedProducts = function(products, searchWord) {
+    //artan düzende sıralama
+    products.sort();
+    let typedString = '';
+    let output = [];
+    let temp = []; // arama sonuçlarını depolama
+    for (let i = 0; i < searchWord.length; i++) {
+        // typedString ile bir loop ekleme 
+        typedString += searchWord[i];
+        
+        for (let j = 0; j < products.length; j++) {
+            // ürünlerin string türüyle başlayıp başlamadığını arama
+            // öyleyse geçici sonuçlara ekle
+            if (products[j].startsWith(typedString)) {
+                temp.push(products[j])
+            }
+            // arama başına yalnızca 3 sonuca ihtiyacımız olduğundan, döngüyü kırabiliriz
+            if (temp.length === 3) {
+                break;
+            }
+        }
+        // geçici sonuçları final çıktısına iletir
+        output.push(temp);
+        temp = [];
+    }
+    return output
+};
