@@ -1,0 +1,35 @@
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge = function(nums1, m, nums2, n) {
+
+ // cur, nums1 dizisinin son dizinidir
+ 
+ let cur = m+n-1;
+ 
+ // her iki dizide de elemanlarımız varsa bunu yaparız
+ while(m>0 && n > 0){
+    if(nums1[m-1] < nums2[n-1]){
+        nums1[cur] = nums2[n-1]
+        n--;
+    }
+    else {
+        nums1[cur] = nums1[m-1]
+         m--
+    }
+    cur--;
+}
+
+// nums1de hiç eleman yoksa nums2deki bütün elemanları oraya ekleriz
+
+while(n>0){
+    nums1[cur] = nums2[n-1]
+    n--; cur--;
+}
+
+
+};
